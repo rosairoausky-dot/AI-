@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 人才地图扩展 Skill</title>
+<style>
+:root{color-scheme:light;--ink:#182230;--muted:#667085;--line:#d0d5dd;--blue:#175cd3;--bg:#f8fafc}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--bg);font:16px/1.7 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}main{max-width:960px;margin:auto;padding:48px 24px 72px}.eyebrow{color:var(--blue);font-weight:700}h1{margin:8px 0 12px;font-size:clamp(2rem,5vw,3.4rem);line-height:1.15}h2{margin-top:42px;font-size:1.45rem}p{max-width:760px}.intro,.panel,.card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px}.intro{border-left:5px solid var(--blue)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.card{padding:18px}.card h3{margin-top:0;font-size:1.05rem}.tag{display:inline-block;margin:3px 5px 3px 0;padding:3px 9px;border:1px solid #b2ddff;border-radius:999px;color:#175cd3;background:#eff8ff;font-size:.9rem}a{color:var(--blue)}code{padding:2px 5px;background:#eef2f6;border-radius:4px}pre{overflow-x:auto;padding:16px;background:#101828;color:#f2f4f7;border-radius:8px}footer{margin-top:48px;color:var(--muted);font-size:.9rem}
+</style></head>
+<body><main>
+<div class="eyebrow">Codex Skill · AI Talent Intelligence</div>
+<h1>AI 人才地图扩展</h1>
+<section class="intro"><p>用于扩展、更新和核验 AI 人才地图。它把社交媒体、社群、论文、开源项目、公司官网和会议活动中的线索整理为可追溯的人物与渠道数据。</p><p><a href="https://github.com/rosairoausky-dot/AI-/blob/main/SKILL.md">查看完整 SKILL.md</a> · <a href="https://github.com/rosairoausky-dot/AI-/tree/main/references">查看数据契约</a></p></section>
+<h2>适用场景</h2><div class="grid"><article class="card"><h3>人才拓展</h3><p>扩展 Kimi、Seed、可灵、MiniMax、阶跃星辰、AI Infra 和主流实验室人员。</p></article><article class="card"><h3>社媒与社群</h3><p>覆盖 LinkedIn、X、小红书、微信公众号、微信群、飞书群、知识星球、Slack、Discord 和 GitHub Discussions。</p></article><article class="card"><h3>关系溯源</h3><p>记录师承、共同作者、同团队、共同创业、组织调动和开源合作，并保留证据强度。</p></article><article class="card"><h3>地图维护</h3><p>更新人物与渠道时，保留原有标注、备注、脑图位置、折叠状态和 localStorage。</p></article></div>
+<h2>证据等级</h2><div class="panel"><p><span class="tag">强证据</span>官方团队页、本人当前主页、本人 LinkedIn、一手公告、带当前资料交叉核验的技术报告。</p><p><span class="tag">中证据</span>权威采访、会议讲者页、维护者历史、两家独立来源对同一人物和职责的确认。</p><p><span class="tag">发现线索</span>搜索摘要、转载、匿名社群发言、评论、无来源截图、单独的模型上传或论文署名。</p><p>发现线索不会直接升级为确定任职，会使用“待核验”“作者池”“公开关联”等标签，并记录下一步核验动作。</p></div>
+<h2>更新规则</h2><div class="panel"><ol><li>先读取现有人才地图结构、稳定标注键和本地存储机制。</li><li>多渠道搜索，并区分当前任职、历史经历、技术贡献和社群发现。</li><li>检查中英文名、别名和组织变体，避免重复人物。</li><li>保留来源 URL、证据强度、更新批次和待核验动作。</li><li>只追加或更新人物、渠道和关系数据，不覆盖用户标注与备注。</li></ol></div>
+<h2>使用方式</h2><pre><code>Use $ai-talent-map-expander to expand the AI talent map with current, source-verified people while preserving annotations and local storage.</code></pre><p>Skill 原文件：<a href="https://github.com/rosairoausky-dot/AI-/blob/main/SKILL.md">SKILL.md</a> · 配置：<a href="https://github.com/rosairoausky-dot/AI-/blob/main/agents/openai.yaml">openai.yaml</a> · <a href="https://github.com/rosairoausky-dot/AI-">GitHub 仓库</a></p><footer>AI Talent Map Expander · rosairoausky-dot/AI-</footer>
+</main></body></html>
