@@ -1,0 +1,7 @@
+interface:
+  display_name: "AI Talent Map Expander"
+  short_description: "Expand AI talent maps from verified people and channels"
+  default_prompt: "Use $ai-talent-map-expander to expand the AI talent map with current, source-verified people while preserving annotations and local storage."
+
+policy:
+  allow_implicit_invocation: true
