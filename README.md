@@ -8,7 +8,11 @@
 
 https://rosairoausky-dot.github.io/AI-/
 
-页面源码位于 `docs/index.html`。推送到 `main` 后，GitHub Actions 会自动发布。原始 skill 文件仍保留在 `SKILL.md`。
+人才地图页面：
+
+https://rosairoausky-dot.github.io/AI-/talent-map/
+
+页面源码位于 `docs/index.html`，人才地图源码位于 `docs/talent-map/index.html`。推送到 `main` 后，GitHub Actions 会自动发布。原始 skill 文件仍保留在 `SKILL.md`。
 
 ## 使用
 
