@@ -828,7 +828,7 @@
       <main>
         <section class="section">
           <h2>最新更新</h2>
-          <p class="section-note">当前批次：2026-08-25。绿色为本轮新增人员或渠道，橙色为本轮补充或变化的已有节点；历史批次角标自动退场。</p>
+          <p class="section-note">当前批次：<span data-update-batch>2026-11-16</span>。绿色为本轮新增人员或渠道，橙色为本轮补充或变化的已有节点；历史批次角标自动退场。</p>
           <div class="table-scroll">
             <table>
               <thead>
@@ -893,7 +893,7 @@
 
         <section class="section">
           <h2>社媒渠道覆盖与缺口</h2>
-          <p class="section-note">截至 2026-08-25，按实际检索状态区分：已使用、公开索引、待登录深扫、待补充；同时标明官方 API、RSS/Sitemap、合作权限、登录人工检索等访问方式和建议刷新周期。公开网页不等于开放接口，社媒与社群线索仍需回到本人或机构来源核验。</p>
+          <p class="section-note">截至 <span data-update-batch>2026-11-16</span>，按实际检索状态区分：已使用、公开索引、待登录深扫、待补充；同时标明官方 API、RSS/Sitemap、合作权限、登录人工检索等访问方式和建议刷新周期。公开网页不等于开放接口，社媒与社群线索仍需回到本人或机构来源核验。</p>
           <div class="table-scroll">
             <table>
               <thead>
@@ -1078,23 +1078,6 @@
           </div>
         </section>
 
-        <section class="section">
-          <h2>HRBP 视角结论</h2>
-          <div class="note-list">
-            <div class="note"><b>Seed/AML 是高价值源头池。</b>外溢人才集中在 RL Infra、训练 Infra、VLM、视觉生成、代码模型和预训练数据等硬能力岗位。</div>
-            <div class="note"><b>流向不是随机跳槽。</b>腾讯、阿里、DeepSeek、Kimi、Meta、OpenAI 等承接的是能直接补组织短板的成熟模块负责人或核心 contributor。</div>
-            <div class="note"><b>创业裂变集中在应用层。</b>飞书、豆包、剪映、视觉技术、AI Lab 背景的人更容易进入 Agent、多模态内容、视频生成、机器人和 AI 硬件方向。</div>
-          </div>
-        </section>
-
-        <section class="section">
-          <h2>组织与招聘动作建议</h2>
-          <div class="note-list">
-            <div class="note"><b>按团队链路建库：</b>Seed-Infra、Seed-VLM、Seed-Speech、Seed-Model、AML、豆包、飞书、剪映、火山引擎 AI 应用分别建人才池。</div>
-            <div class="note"><b>按能力族群触达：</b>Infra/RL 人才用训练效率、算力规模、技术自治权沟通；产品/商业化人才用场景、用户规模和闭环速度沟通。</div>
-            <div class="note"><b>重点关注年轻骨干：</b>第二篇提到 Seed 转向校招和实习生培养，中高级外招收缩后，2021 年后入职的快速成长型人才值得长期跟踪。</div>
-          </div>
-        </section>
       </main>
     </div>
   </div>
@@ -1805,6 +1788,9 @@
     const search = document.getElementById("search");
     const filters = [...document.querySelectorAll("input[type=checkbox]")];
     const CURRENT_UPDATE_BATCH = "2026-11-16";
+    document.querySelectorAll("[data-update-batch]").forEach(label => {
+      label.textContent = CURRENT_UPDATE_BATCH;
+    });
     // Mark every channel as reviewed in this refresh while retaining its original notes and access state.
     socialChannels.forEach(channel => {
       channel.updateBatch = CURRENT_UPDATE_BATCH;
@@ -2270,7 +2256,7 @@
       renderStats();
       latestRows.innerHTML = latestItems().map((u, i) => `
         <tr data-entry-id="${u.entryId}" data-mark-key="${u.sourceKey}" data-index="${u.entryId}" data-module-item="latestRows" data-type="${u.itemType}" data-skills="${u.skills.join(",")}" data-search="${Object.values(u).flat().join(" ").toLowerCase()}">
-          <td>${statusBadge(u)}</td>
+          <td>${statusBadge({...u, updateBatch:CURRENT_UPDATE_BATCH})}</td>
           <td>${u.type}</td>
           <td><b>${u.label}</b></td>
           <td>${u.node}</td>
@@ -2510,19 +2496,17 @@
             ordered.splice(latestIndex + 1, 0, module);
           }
         });
-        if (!savedOrder.includes("社媒渠道覆盖与缺口")) {
-          const channelModule = byTitle.get("社媒渠道覆盖与缺口");
-          const latestModule = byTitle.get("最新更新");
+        const channelModule = byTitle.get("社媒渠道覆盖与缺口");
+        if (channelModule) {
           const channelIndex = ordered.indexOf(channelModule);
-          const latestIndex = ordered.indexOf(latestModule);
-          if (channelIndex >= 0 && latestIndex >= 0) {
-            ordered.splice(channelIndex, 1);
-            ordered.splice(latestIndex + 1, 0, channelModule);
-          }
+          if (channelIndex >= 0) ordered.splice(channelIndex, 1);
+          ordered.push(channelModule);
         }
         ordered.forEach(section => main.appendChild(section));
         main.dataset.orderRestored = "1";
       }
+      const channelSection = [...main.querySelectorAll(":scope > .section")].find(section => section.querySelector("h2")?.textContent?.trim() === "社媒渠道覆盖与缺口");
+      if (channelSection && main.lastElementChild !== channelSection) main.appendChild(channelSection);
       const collapsedState = loadJson("moduleCollapsed", {});
       const modules = [...document.querySelectorAll("main > .section")];
       modules.forEach((section, idx) => {
