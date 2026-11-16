@@ -14,6 +14,8 @@ https://rosairoausky-dot.github.io/AI-/talent-map/
 
 页面源码位于 `docs/index.html`，人才地图源码位于 `docs/talent-map/index.html`。推送到 `main` 后，GitHub Actions 会自动发布。原始 skill 文件仍保留在 `SKILL.md`。
 
+最近一次人才数据更新：`2026-11-16`。更新记录见 [`UPDATE-2026-11-16.md`](UPDATE-2026-11-16.md)，包括 28 个渠道的访问状态、公众号/小红书的可访问性边界和本轮人员变动。
+
 ## 使用
 
 ```text
