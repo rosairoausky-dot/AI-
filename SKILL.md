@@ -13,6 +13,8 @@ Produce source-traceable person and channel updates that can be merged into an e
 
 ## Workflow
 
+For this map, every scheduled or general refresh covers all retained modules. Read [the full refresh contract](references/full-refresh.md) before research; a small personnel patch is not a full refresh. A module with blocked or missing evidence must remain explicitly incomplete rather than receiving a fresh content badge.
+
 1. Inspect the existing map before editing. Identify the people array, channel array, relation/lineage data, update-batch marker, render functions, annotation keys, and localStorage/import mechanism.
 2. Search multiple source classes relevant to the request: official company/team pages, personal sites, LinkedIn public pages, X, Xiaohongshu image/text posts, WeChat public indexes, GitHub, Hugging Face, ModelScope, Gitee, arXiv/OpenReview, conference speaker pages, YouTube descriptions, and public community announcements.
 3. Treat communities as discovery channels. Slack, Discord, WeChat groups, Feishu groups, Knowledge Planet, GitHub Discussions, meetups, workshops, and event chats must not be used to infer employment from a nickname, anonymous post, or membership alone.
@@ -33,6 +35,8 @@ Produce source-traceable person and channel updates that can be merged into an e
 Use the map's existing object schema and stable keys. Prefer existing annotation keys, including `person-source:${name}:${dest}` and `social-source:${channel}`, rather than inventing replacements. Use the current date or user-specified batch for `updateBatch`. Avoid duplicate people by checking normalized English names, Chinese names, aliases, and organization variants before insertion.
 
 When a channel is added or refreshed, include its access method, what it can discover, current coverage, gaps, verification rule, refresh cadence, priority, and update batch. Explicitly distinguish an open API from public web pages and login-only/manual inspection.
+
+Keep `checkedAt` (attempt), `verifiedAt` (claim supported by a source read in this run), and `updateBatch` (material change) separate. Never blanket-assign the batch to every channel. Preserve annotation keys across employer changes with an explicit stable `sourceKey`/`markKey` override where supported.
 
 ## Validation
 
